@@ -5,7 +5,7 @@ import os
 import s3fs
 import json
 import subprocess
-from utils import constants as cts
+from .utils import constants as cts
 
 
 def _setup_env():
@@ -76,7 +76,8 @@ def write_to_jasmin_s3(creds_file, zarr_path, ds):
                                   client_kwargs={'endpoint_url': jasmin_store_credentials['endpoint_url']}
                                   )
     s3_store = s3fs.S3Map(root=zarr_path, s3=jasmin_s3)
-    ds.to_zarr(store=s3_store, mode='w')
+    ds.to_zarr(store=s3_store, mode='w', consolidated=True)
+    ds.close()
 
     return s3_store
 
@@ -98,16 +99,16 @@ def main():
     dr = "../tests/mini-esgf-data/test_data/badc/cmip6/data/CMIP6/CMIP/IPSL/IPSL-CM6A-LR/historical/r1i1p1f1/SImon/siconc/gn/latest/"
     ds = read_mfdataset(dr)
     print(ds.siconc.values[120][3][1])
-    print(f'{cts.LOCAL_OUTPUT_DIR}/test.zarr')
-    zarr_path = f'{cts.LOCAL_OUTPUT_DIR}/test.zarr'
-    write_to_disk_ok = write_dataset_to_disk(ds, zarr_path)
-    ds_read = read_dataset_from_disk(zarr_path)
-    print(ds_read.siconc.values[120][3][1])
-    subprocess.call(f"rm -fr {zarr_path}".split())
-    s3_zarr_path = f"rp-test/zarr-test-12"
+    # print(f'{cts.LOCAL_OUTPUT_DIR}/test.zarr')
+    # zarr_path = f'{cts.LOCAL_OUTPUT_DIR}/test.zarr'
+    # write_to_disk_ok = write_dataset_to_disk(ds, zarr_path)
+    # ds_read = read_dataset_from_disk(zarr_path)
+    # print(ds_read.siconc.values[120][3][1])
+    # subprocess.call(f"rm -fr {zarr_path}".split())
+    s3_zarr_path = f"rp-test/zarr-test-21"
     zarr_s3_store = write_to_jasmin_s3(cts.s3_creds_file, s3_zarr_path, ds)
     s3_read = read_from_jasmin_s3(zarr_s3_store)
-    print(ds.siconc.values[120][3][:])
+    print(s3_read.siconc.values[120][3][1])
 
 
 
