@@ -111,3 +111,6 @@ ENV/
 # secret files
 *.secret
 access_creds.json
+
+# test data
+test_data
