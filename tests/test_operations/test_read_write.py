@@ -5,13 +5,14 @@ import subprocess
 import sys
 import os
 import xarray as xr
-from cmip6_xarray_zarr.utils import constants as cts
+import constants as cts
 from cmip6_xarray_zarr import zarr_s3_rw as c6xrz
 
 test_dir = "../mini-esgf-data/test_data/badc/cmip6/data/"
 datasets = ['CMIP6.CMIP.IPSL.IPSL-CM6A-LR.historical.r1i1p1f1.SImon.siconc.gn',]
 drs = [ os.path.join(test_dir, d.replace('.', '/'), 'latest') for d in datasets ]
 zarr_path = f'{cts.LOCAL_OUTPUT_DIR}/test.zarr'
+
 
 def setUp():
     """Set up test fixtures, if any."""
@@ -37,12 +38,14 @@ def test_write_dataset_to_disk():
         written = c6xrz.write_dataset_to_disk(ds, zarr_path)
         assert(written)
 
+
 def tearDown():
     """Tear down test fixtures, if any."""
     for dr in drs:
         id = '-'.join(dr.split('/')[9:14])
         zarr_path = f'{cts.LOCAL_OUTPUT_DIR}/test_{id}.zarr'
         subprocess.call(f'rm -fr {zarr_path}'.split())
+
 
 def test_write_to_jasmin_s3():
 

@@ -5,7 +5,7 @@ import os
 import s3fs
 import json
 import subprocess
-from .utils import constants as cts
+from utils import constants as cts
 
 
 def _setup_env():
@@ -105,7 +105,7 @@ def main():
     # ds_read = read_dataset_from_disk(zarr_path)
     # print(ds_read.siconc.values[120][3][1])
     # subprocess.call(f"rm -fr {zarr_path}".split())
-    s3_zarr_path = f"rp-test/zarr-test-21"
+    s3_zarr_path = f"rp-test/zarr-test-03"
     zarr_s3_store = write_to_jasmin_s3(cts.s3_creds_file, s3_zarr_path, ds)
     s3_read = read_from_jasmin_s3(zarr_s3_store)
     print(s3_read.siconc.values[120][3][1])
