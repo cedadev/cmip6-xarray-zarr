@@ -13,8 +13,12 @@ logging.basicConfig(format='[%(levelname)s]:%(message)s', level=logging.INFO)
 with open(cts.s3_creds_file) as f:
     jasmin_store_credentials = json.load(f)
 
-jasmin_s3 = s3fs.S3FileSystem(anon=False, secret=jasmin_store_credentials['secret'],
-                              key=jasmin_store_credentials['token'], client_kwargs={'endpoint_url': jasmin_store_credentials['endpoint_url']})
+jasmin_s3 = s3fs.S3FileSystem(anon=False,
+                              secret=jasmin_store_credentials['secret'],
+                              key=jasmin_store_credentials['token'],
+                              client_kwargs={'endpoint_url': jasmin_store_credentials['endpoint_url']}
+                              )
+
 
 def _setup_env():
     """
@@ -28,7 +32,7 @@ def _setup_env():
     env['OPENBLAS_NUM_THREADS'] = '1'
 
 
-# _setup_env()
+_setup_env()
 
 
 def setup_configs(ddir):
@@ -43,9 +47,9 @@ def main(dr):
 
     logging.info(f'Scanning {dr}')
     logging.info(f'Number of files {len(os.listdir(dr))}')
-    for f in os.listdir(dr):
-        logging.info(f'    {f} {os.path.getsize(os.path.join(dr, f))}')
 
+    for file in os.listdir(dr):
+        logging.info(f'    {file} {os.path.getsize(os.path.join(dr, file))}')
 
     # zarr_path, chunk_rule = setup_configs(dr.strip('/badc/cmip6/data/'))
     # logging.info(f'Writing to {zarr_path}')
