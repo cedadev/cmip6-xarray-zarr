@@ -1,0 +1,21 @@
+cpu-bind=MASK - host606, task  0  0 [10267]: mask 0x800000000 set
+[INFO]:Scanning /badc/cmip6/data/CMIP6/CMIP/MOHC/UKESM1-0-LL/amip/r1i1p1f4/Amon/tas/gn/v20200213/
+[INFO]:Number of files 1
+[INFO]:    tas_Amon_UKESM1-0-LL_amip_r1i1p1f4_gn_197901-201412.nc 24278146
+[INFO]:Writing to cmip6-test/CMIP6_CMIP_MOHC_UKESM1-0-LL_amip_r1i1p1f4_Amon_tas_gn_v20200213
+write_cmip6_dataset_to_jasminS3.py:57: FutureWarning: In xarray version 0.15 the default behaviour of `open_mfdataset`
+will change. To retain the existing behavior, pass
+combine='nested'. To use future default behavior, pass
+combine='by_coords'. See
+http://xarray.pydata.org/en/stable/combining.html#combining-multi
+
+  ds = xr.open_mfdataset(f'{dr}/*.nc')
+/apps/jasmin/jaspy/miniconda_envs/jaspy3.7/m3-4.6.14/envs/jaspy3.7-m3-4.6.14-r20200606/lib/python3.7/site-packages/xarray/backends/api.py:941: FutureWarning: The datasets supplied have global dimension coordinates. You may want
+to use the new `combine_by_coords` function (or the
+`combine='by_coords'` option to `open_mfdataset`) to order the datasets
+before concatenation. Alternatively, to continue concatenating based
+on the order the datasets are supplied in future, please use the new
+`combine_nested` function (or the `combine='nested'` option to
+open_mfdataset).
+  from_openmfds=True,
+[INFO]:Time taken to write dataset /badc/cmip6/data/CMIP6/CMIP/MOHC/UKESM1-0-LL/amip/r1i1p1f4/Amon/tas/gn/v20200213/ 39.04965543746948

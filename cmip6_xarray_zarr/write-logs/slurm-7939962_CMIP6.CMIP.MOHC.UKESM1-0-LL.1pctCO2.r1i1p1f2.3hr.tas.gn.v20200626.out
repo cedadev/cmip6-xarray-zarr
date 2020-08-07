@@ -1,0 +1,9 @@
+cpu-bind=MASK - host108, task  0  0 [19609]: mask 0x80 set
+[INFO]:Scanning /badc/cmip6/data/CMIP6/CMIP/MOHC/UKESM1-0-LL/1pctCO2/r1i1p1f2/3hr/tas/gn/v20200626/
+[INFO]:Number of files 3
+[INFO]:    tas_3hr_UKESM1-0-LL_1pctCO2_r1i1p1f2_gn_185001010300-190001010000.nc 8355059733
+[INFO]:    tas_3hr_UKESM1-0-LL_1pctCO2_r1i1p1f2_gn_190001010300-195001010000.nc 8316623166
+[INFO]:    tas_3hr_UKESM1-0-LL_1pctCO2_r1i1p1f2_gn_195001010300-200001010000.nc 8272076439
+[INFO]:Writing to cmip6-test/CMIP6_CMIP_MOHC_UKESM1-0-LL_1pctCO2_r1i1p1f2_3hr_tas_gn_v2020062
+/apps/slurm/spool/slurmd/job7939962/slurm_script: line 4: 19617 Killed                  python write_cmip6_dataset_to_jasminS3.py /badc/cmip6/data/CMIP6/CMIP/MOHC/UKESM1-0-LL/1pctCO2/r1i1p1f2/3hr/tas/gn/v20200626/
+slurmstepd: error: Detected 1 oom-kill event(s) in step 7939962.batch cgroup. Some of your processes may have been killed by the cgroup out-of-memory handler.

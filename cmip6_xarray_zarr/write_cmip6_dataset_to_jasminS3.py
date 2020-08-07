@@ -51,18 +51,19 @@ def main(dr):
     for file in os.listdir(dr):
         logging.info(f'    {file} {os.path.getsize(os.path.join(dr, file))}')
 
-    # zarr_path, chunk_rule = setup_configs(dr.strip('/badc/cmip6/data/'))
-    # logging.info(f'Writing to {zarr_path}')
-    #
-    # ds = xr.open_mfdataset(f'{dr}/*.nc')
-    # chunked_ds = ds.chunk(chunk_rule)
-    # s3_store = s3fs.S3Map(root=zarr_path, s3=jasmin_s3)
-    # start = time.time()
-    # chunked_ds.to_zarr(store=s3_store, mode='w', consolidated=True)
-    # end = time.time()
-    # time_taken = end - start
-    # logging.info(f'Time taken to write dataset {dr} {time_taken}')
-    # 
+    zarr_path, chunk_rule = setup_configs(dr.strip('/badc/cmip6/data/'))
+    logging.info(f'Writing to {zarr_path}')
+
+    ds = xr.open_mfdataset(f'{dr}/*.nc')
+    chunked_ds = ds.chunk(chunk_rule)
+    s3_store = s3fs.S3Map(root=zarr_path, s3=jasmin_s3)
+    start = time.time()
+    chunked_ds.to_zarr(store=s3_store, mode='w', consolidated=True)
+    end = time.time()
+    time_taken = end - start
+    logging.info(f'Time taken to write dataset {dr} {time_taken}')
+
+
 
 if __name__ == "__main__":
 

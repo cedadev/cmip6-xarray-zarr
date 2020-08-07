@@ -1,0 +1,30 @@
+cpu-bind=MASK - host098, task  0  0 [26881]: mask 0x2 set
+[INFO]:Scanning /badc/cmip6/data/CMIP6/CMIP/MOHC/HadGEM3-GC31-MM/historical/r2i1p1f3/Amon/tas/gn/v20191218/
+[INFO]:Number of files 10
+[INFO]:    tas_Amon_HadGEM3-GC31-MM_historical_r2i1p1f3_gn_185001-186912.nc 63132895
+[INFO]:    tas_Amon_HadGEM3-GC31-MM_historical_r2i1p1f3_gn_187001-188912.nc 63119972
+[INFO]:    tas_Amon_HadGEM3-GC31-MM_historical_r2i1p1f3_gn_189001-190912.nc 63124316
+[INFO]:    tas_Amon_HadGEM3-GC31-MM_historical_r2i1p1f3_gn_191001-192912.nc 63142590
+[INFO]:    tas_Amon_HadGEM3-GC31-MM_historical_r2i1p1f3_gn_193001-194912.nc 63096148
+[INFO]:    tas_Amon_HadGEM3-GC31-MM_historical_r2i1p1f3_gn_195001-196912.nc 63103689
+[INFO]:    tas_Amon_HadGEM3-GC31-MM_historical_r2i1p1f3_gn_197001-198712.nc 56803299
+[INFO]:    tas_Amon_HadGEM3-GC31-MM_historical_r2i1p1f3_gn_198801-198912.nc 6368649
+[INFO]:    tas_Amon_HadGEM3-GC31-MM_historical_r2i1p1f3_gn_199001-200912.nc 63083000
+[INFO]:    tas_Amon_HadGEM3-GC31-MM_historical_r2i1p1f3_gn_201001-201412.nc 15810582
+[INFO]:Writing to cmip6-test/CMIP6_CMIP_MOHC_HadGEM3-GC31-MM_historical_r2i1p1f3_Amon_tas_gn_v20191218
+write_cmip6_dataset_to_jasminS3.py:57: FutureWarning: In xarray version 0.15 the default behaviour of `open_mfdataset`
+will change. To retain the existing behavior, pass
+combine='nested'. To use future default behavior, pass
+combine='by_coords'. See
+http://xarray.pydata.org/en/stable/combining.html#combining-multi
+
+  ds = xr.open_mfdataset(f'{dr}/*.nc')
+/apps/jasmin/jaspy/miniconda_envs/jaspy3.7/m3-4.6.14/envs/jaspy3.7-m3-4.6.14-r20200606/lib/python3.7/site-packages/xarray/backends/api.py:941: FutureWarning: The datasets supplied have global dimension coordinates. You may want
+to use the new `combine_by_coords` function (or the
+`combine='by_coords'` option to `open_mfdataset`) to order the datasets
+before concatenation. Alternatively, to continue concatenating based
+on the order the datasets are supplied in future, please use the new
+`combine_nested` function (or the `combine='nested'` option to
+open_mfdataset).
+  from_openmfds=True,
+[INFO]:Time taken to write dataset /badc/cmip6/data/CMIP6/CMIP/MOHC/HadGEM3-GC31-MM/historical/r2i1p1f3/Amon/tas/gn/v20191218/ 546.3466329574585
